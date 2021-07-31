@@ -60,6 +60,10 @@ AFirstPrototypeCPPCharacter::AFirstPrototypeCPPCharacter()
 	PantsMesh = CreateDefaultSubobject<USkeletalMeshComponent>(FName("PantsMesh"));
 	PantsMesh->SetupAttachment(GetMesh());
 
+	/** Set speed **/
+	WalkingSpeed = 400.0f;
+	RunningSpeed = 800.0f;
+
 	// Note: The skeletal mesh and anim blueprint references on the Mesh component (inherited from Character) 
 	// are set in the derived blueprint asset named MyCharacter (to avoid direct content references in C++)
 }
@@ -157,10 +161,15 @@ void AFirstPrototypeCPPCharacter::MoveForward(float Value)
 		// get forward vector
 		const FVector Direction = FRotationMatrix(YawRotation).GetUnitAxis(EAxis::X);
 
-		if (!IsSprinting)
+		if (IsSprinting)
 		{
-			Value *= 0.5f;
+			Value = RunningSpeed;
 		}
+		else
+		{
+			Value = WalkingSpeed;
+		}
+		
 		AddMovementInput(Direction, Value);
 	}
 }
@@ -176,10 +185,15 @@ void AFirstPrototypeCPPCharacter::MoveRight(float Value)
 		// get right vector 
 		const FVector Direction = FRotationMatrix(YawRotation).GetUnitAxis(EAxis::Y);
 		
-		if (!IsSprinting)
+		if (IsSprinting)
 		{
-			Value *= 0.5f;
+			Value = RunningSpeed;
 		}
+		else
+		{
+			Value = WalkingSpeed;
+		}
+		
 		// add movement in that direction
 		AddMovementInput(Direction, Value);
 	}

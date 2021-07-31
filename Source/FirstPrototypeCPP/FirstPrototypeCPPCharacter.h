@@ -23,6 +23,10 @@ class AFirstPrototypeCPPCharacter : public ACharacter
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Inventory, meta = (AllowPrivateAccess = "true"))
 	class UInventoryComponent* Inventory;
 
+	// TODO refactor to stat component
+	float WalkingSpeed;
+	float RunningSpeed;
+
 public:
 	AFirstPrototypeCPPCharacter();
 
@@ -44,6 +48,7 @@ public:
 	class UPlayerStatComponent* PlayerStatComp;
 
 	/** Clothing **/
+	// TODO create component for clothing
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	USkeletalMeshComponent* ShirtMesh;
 	

@@ -5,16 +5,14 @@
 
 UAnimInstanceCharacter::UAnimInstanceCharacter()
 {
-	Super:UAnimInstance();
-
-	this->MovementSpeed = 800.0f;
+	MovementSpeed = 0.0f;
 }
 
 void UAnimInstanceCharacter::UpdateAnimationProperties()
 {
 	APawn* Pawn = TryGetPawnOwner();
 	
-	if(Pawn)
+	if (Pawn)
 	{
 		MovementSpeed = Pawn->GetVelocity().Size();
 	}

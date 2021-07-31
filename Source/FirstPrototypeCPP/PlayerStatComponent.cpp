@@ -80,7 +80,7 @@ float UPlayerStatComponent::GetHealth()
 {
 	return Health;
 }
-	
+
 float UPlayerStatComponent::GetEnergy()
 {
 	return Energy;
@@ -97,4 +97,3 @@ void UPlayerStatComponent::ControlEnergyTimer(bool Stop)
 		GetWorld()->GetTimerManager().UnPauseTimer(EnergyTimerHandle);
 	}
 }
-

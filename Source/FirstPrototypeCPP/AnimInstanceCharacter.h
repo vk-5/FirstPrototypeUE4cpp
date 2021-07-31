@@ -20,4 +20,7 @@ protected:
 
 	UFUNCTION(BlueprintCallable, Category="Animations")
 	virtual void UpdateAnimationProperties();
+
+public:
+	UAnimInstanceCharacter();
 };
